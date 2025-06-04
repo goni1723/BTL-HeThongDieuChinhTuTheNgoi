@@ -1,4 +1,4 @@
-                                                    🪑 Hệ thống nhắc nhở điều chỉnh tư thế ngồi
+                                  🪑 Hệ thống nhắc nhở điều chỉnh tư thế ngồi
 📌 Giới thiệu
 Hệ thống nhắc nhở điều chỉnh tư thế ngồi là một giải pháp sử dụng công nghệ học sâu để giám sát và nhắc nhở người dùng điều chỉnh tư thế ngồi đúng cách, đặc biệt là trong các môi trường làm việc và học tập kéo dài. Với sự kết hợp của MediaPipe và YOLOv8, hệ thống có khả năng phát hiện và phân tích tư thế ngồi của người dùng theo thời gian thực.
 
