@@ -1,48 +1,63 @@
-🪑 Hệ thống nhắc nhở điều chỉnh tư thế ngồi
+                                                    🪑 Hệ thống nhắc nhở điều chỉnh tư thế ngồi
 📌 Giới thiệu
-Hệ thống nhắc nhở điều chỉnh tư thế ngồi là một giải pháp công nghệ nhằm cải thiện sức khỏe và tư thế ngồi của người dùng, đặc biệt là trong môi trường làm việc hoặc học tập kéo dài. Hệ thống sử dụng các cảm biến để giám sát tư thế ngồi của người dùng, phát hiện khi người ngồi sai tư thế và đưa ra cảnh báo nhắc nhở để điều chỉnh. Mục tiêu của dự án là giúp giảm thiểu các vấn đề về cột sống, đau lưng và các bệnh lý liên quan đến tư thế không đúng.
+Hệ thống nhắc nhở điều chỉnh tư thế ngồi là một giải pháp sử dụng công nghệ học sâu để giám sát và nhắc nhở người dùng điều chỉnh tư thế ngồi đúng cách, đặc biệt là trong các môi trường làm việc và học tập kéo dài. Với sự kết hợp của MediaPipe và YOLOv8, hệ thống có khả năng phát hiện và phân tích tư thế ngồi của người dùng theo thời gian thực.
 
-Thông qua việc sử dụng các cảm biến góc và cảm biến chuyển động, dữ liệu được xử lý và truyền về hệ thống. Khi phát hiện người dùng có dấu hiệu ngồi sai tư thế trong thời gian dài, hệ thống sẽ gửi thông báo nhắc nhở tới người dùng, giúp họ duy trì tư thế ngồi đúng và khỏe mạnh.
+MediaPipe: Là một thư viện mã nguồn mở của Google, được sử dụng để phát hiện và theo dõi các điểm đặc trưng trên cơ thể người, giúp nhận diện tư thế ngồi.
+
+YOLOv8: Là một mô hình học sâu tiên tiến, có khả năng phát hiện đối tượng trong ảnh và video với độ chính xác cao, giúp nhận diện tư thế ngồi không đúng hoặc sai lệch trong các tình huống phức tạp.
+
+Dự án này cung cấp một hệ thống cảnh báo tự động khi người dùng ngồi sai tư thế hoặc ngồi quá lâu, giúp bảo vệ sức khỏe và giảm thiểu các vấn đề về xương khớp, đặc biệt là đau lưng và các bệnh lý liên quan đến tư thế ngồi.
 
 🧠 Mục tiêu
-Cải thiện sức khỏe: Giảm thiểu các vấn đề về xương khớp và cột sống do tư thế ngồi sai.
+Cải thiện sức khỏe người dùng: Giảm thiểu các vấn đề về cột sống và đau lưng do ngồi sai tư thế trong thời gian dài.
 
-Tăng cường ý thức người dùng: Khuyến khích người dùng điều chỉnh tư thế ngồi đúng.
+Tăng cường ý thức về tư thế ngồi đúng: Khuyến khích người dùng điều chỉnh tư thế ngồi đúng cách, giúp duy trì sức khỏe lâu dài.
 
-Tự động hóa cảnh báo: Hệ thống tự động nhận diện tư thế ngồi sai và nhắc nhở người dùng mà không cần sự can thiệp của con người.
+Phát triển công nghệ tiên tiến: Áp dụng các công nghệ học máy (AI) và xử lý hình ảnh (Computer Vision) như MediaPipe và YOLOv8 để theo dõi và phân tích tư thế ngồi.
 
-Tạo thói quen ngồi đúng: Giúp người dùng xây dựng thói quen ngồi đúng trong thời gian dài.
+Tạo thói quen tốt: Giúp người dùng nhận ra các tư thế ngồi sai và hình thành thói quen ngồi đúng.
 
 ⚙️ Công nghệ sử dụng
 Thành phần	Mô tả
-NodeMCU ESP8266	Vi điều khiển, gửi dữ liệu cảm biến qua WiFi
-Cảm biến góc	Xác định góc nghiêng của cơ thể để phát hiện tư thế ngồi sai
-Cảm biến chuyển động	Phát hiện khi người dùng ngồi quá lâu mà không thay đổi tư thế
-Ứng dụng di động/Website	Cung cấp giao diện hiển thị trạng thái và thông báo nhắc nhở
-Firebase Realtime DB	Lưu trữ và đồng bộ dữ liệu từ cảm biến
-Google Maps API	(Nếu có) Theo dõi vị trí người dùng và cung cấp các thông tin hỗ trợ khác (ví dụ như có thể là thông tin văn phòng, phòng học, v.v.)
+MediaPipe	Thư viện của Google dùng để phát hiện và theo dõi các điểm cơ thể người (keypoints) giúp nhận diện tư thế ngồi.
+YOLOv8	Mô hình phát hiện đối tượng hiện đại giúp nhận diện tư thế ngồi và cảnh báo khi người dùng ngồi sai.
+Python	Ngôn ngữ lập trình chính để triển khai hệ thống, xử lý dữ liệu và kết nối các mô hình AI.
+OpenCV	Thư viện xử lý hình ảnh, giúp xử lý video và kết nối với mô hình MediaPipe và YOLOv8.
+TensorFlow/ PyTorch	Các framework học sâu hỗ trợ việc huấn luyện và sử dụng các mô hình YOLOv8.
+Flask/ FastAPI	Cung cấp backend API để giao tiếp giữa hệ thống nhận diện và ứng dụng web/di động.
 
 🔄 Quy trình hoạt động
-Thu thập dữ liệu: Các cảm biến theo dõi tư thế ngồi của người dùng, đo góc và chuyển động.
+Thu thập video đầu vào: Hệ thống sử dụng camera để thu thập hình ảnh hoặc video từ người dùng trong thời gian thực.
 
-Xử lý dữ liệu: NodeMCU nhận dữ liệu từ cảm biến và xử lý.
+Phân tích tư thế ngồi:
 
-Thông báo nhắc nhở: Nếu tư thế ngồi sai hoặc người dùng ngồi quá lâu, hệ thống sẽ gửi cảnh báo thông qua ứng dụng hoặc đèn báo.
+MediaPipe sẽ phát hiện các điểm đặc trưng trên cơ thể người dùng và xác định các tư thế ngồi.
 
-Lập lịch nhắc nhở: Hệ thống tự động tạo ra các nhắc nhở sau mỗi khoảng thời gian nhất định nếu người dùng vẫn duy trì tư thế sai.
+YOLOv8 sẽ phân tích hình ảnh và phát hiện các đối tượng liên quan đến tư thế ngồi sai.
+
+Đánh giá tư thế: Dựa vào kết quả phân tích từ MediaPipe và YOLOv8, hệ thống sẽ xác định xem người dùng có ngồi sai tư thế hay không.
+
+Cảnh báo nhắc nhở: Khi người dùng ngồi sai hoặc ngồi quá lâu, hệ thống sẽ gửi cảnh báo nhắc nhở dưới dạng thông báo âm thanh, hình ảnh hoặc tin nhắn để yêu cầu người dùng điều chỉnh tư thế.
+
+Lập lịch nhắc nhở định kỳ: Hệ thống có thể lập lịch tự động để nhắc nhở người dùng thay đổi tư thế sau một khoảng thời gian nhất định.
 
 📍 Tính năng nổi bật
-Phát hiện tư thế ngồi sai: Hệ thống tự động nhận diện các tư thế ngồi không đúng.
+Phát hiện tư thế ngồi sai: Hệ thống có khả năng nhận diện các tư thế ngồi sai lệch nhờ vào công nghệ nhận diện cơ thể từ MediaPipe và YOLOv8.
 
-Cảnh báo nhắc nhở: Người dùng nhận thông báo khi cần điều chỉnh tư thế ngồi.
+Cảnh báo thông minh: Hệ thống sẽ gửi cảnh báo khi người dùng ngồi sai tư thế hoặc ngồi quá lâu mà không thay đổi tư thế.
 
-Theo dõi thời gian ngồi: Cảnh báo nếu người dùng ngồi quá lâu mà không thay đổi tư thế.
+Theo dõi thời gian ngồi: Hệ thống sẽ theo dõi thời gian ngồi và gửi nhắc nhở sau mỗi khoảng thời gian nhất định.
 
-Dễ dàng cấu hình và mở rộng: Có thể tùy chỉnh các ngưỡng cảnh báo và dễ dàng mở rộng để hỗ trợ nhiều người dùng.
+Giao diện thân thiện: Cung cấp giao diện người dùng dễ sử dụng, hiển thị thông tin về tư thế ngồi và cảnh báo nhắc nhở.
+
+Khả năng mở rộng: Hệ thống có thể dễ dàng mở rộng để hỗ trợ nhiều người dùng hoặc tích hợp với các thiết bị phần cứng khác.
 
 🔮 Định hướng phát triển
-Cải tiến nhận diện tư thế: Tích hợp các công nghệ nhận diện tư thế bằng AI để cải thiện độ chính xác.
+Cải tiến nhận diện tư thế: Tích hợp các mô hình học sâu mới nhất như OpenPose hoặc các thuật toán phân tích tư thế nâng cao để tăng độ chính xác.
 
-Theo dõi sức khỏe tổng thể: Tích hợp thêm các cảm biến đo lường các yếu tố khác như nhịp tim, mức độ căng thẳng, để cung cấp một hệ thống chăm sóc sức khỏe toàn diện.
+Tích hợp thêm tính năng chăm sóc sức khỏe: Đưa vào các tính năng theo dõi sức khỏe tổng thể như nhịp tim, mức độ căng thẳng, v.v.
 
-Tích hợp với các thiết bị thông minh khác: Kết nối hệ thống với các thiết bị gia đình thông minh như máy tính bảng, laptop, để nhận diện tư thế ngồi trong các tình huống khác nhau.
+Tích hợp ứng dụng di động: Phát triển ứng dụng di động để giúp người dùng dễ dàng theo dõi tư thế ngồi và nhận cảnh báo ngay trên điện thoại.
+
+Hệ thống phân tích dữ liệu: Phát triển các công cụ phân tích dữ liệu giúp người dùng theo dõi lịch sử tư thế ngồi của họ và cải thiện thói quen.
+
